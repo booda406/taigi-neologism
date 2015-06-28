@@ -26,7 +26,7 @@
 ##Backend
 
 * 採用Django做為後端的Web應用框架，由Python寫成
-* 整個後端的資料夾分為
+* 整個後端的資料夾分為 
   │
   └dataProcessing_not_in_Django
   └queryChinese
