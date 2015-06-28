@@ -45,4 +45,4 @@
   1. 確認已經安裝Django套件
   2. 如果沒安裝請先安裝Django套件，執行pip install Django -U
   3. 進入Backend的資料夾中啟動後端server，執行python manage.py runserver
-  4. 到 http://127.0.0.1:8000/hello/ 確認使否成功啟動
+  4. 到 http://127.0.0.1:8000/hello/ 確認是否成功啟動
