@@ -26,19 +26,19 @@
 ##Backend
 
 * 採用Django做為後端的Web應用框架，由Python寫成
-* 整個後端的資料夾分為 
-  │
-  └dataProcessing_not_in_Django
-  └queryChinese
-  └queryClosePronounce
-  └taigiGameDB
+* 整個後端的資料夾分為<br/>
+  │<br/>
+  └dataProcessing_not_in_Django<br/>
+  └queryChinese<br/>
+  └queryClosePronounce<br/>
+  └taigiGameDB<br/>
 
-* dataProcessing_not_in_Django
+* dataProcessing_not_in_Django<br/>
   -是用來儲存處理資料庫中罕見中文字以及重複字詞所用到的程式
-* queryChinese & queryClosePronounce
-  -資料夾底下的model.py是用來建立儲存資料格式的模型
+* queryChinese & queryClosePronounce<br/>
+  -資料夾底下的model.py是用來建立儲存資料格式的模型<br/>
   -而views.py是用來處理文字的查詢、將題目打包丟給前端(前者)以及相似發音的查詢(後者)
-* taigiGameDB
+* taigiGameDB<br/>
   -主要是利用底下的urls.py來提供對應的查詢
 
 * 執行步驟
