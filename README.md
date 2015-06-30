@@ -48,6 +48,10 @@
   4. 到 http://127.0.0.1:8000/hello/ 確認是否成功啟動
   
 
+## API
+  * http://127.0.0.1:8000/q/get_question/                 取得題目
+  * http://127.0.0.1:8000/q/chinese_word/工夫/            取得"工夫"的音標
+  * http://127.0.0.1:8000/q/close_pronounce/hu/           取得發音為"hu"的相似字
 
 ## License
 
