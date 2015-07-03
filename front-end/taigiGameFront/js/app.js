@@ -663,7 +663,7 @@
 
       _Data.prototype.getMp3New = function(word, callback) {
         var url;
-        url = '/music/' + encodeURIComponent(word) + '.wav';
+        url = './music/' + encodeURIComponent(word) + '.wav';
         return $.ajax({
           type: 'get',
           dataType: 'wav',
