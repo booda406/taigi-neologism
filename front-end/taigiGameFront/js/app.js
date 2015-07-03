@@ -616,7 +616,7 @@
         return $.ajax({
           type: 'get',
           dataType: 'text',
-          url: "../q/close_pronounce/" + pronounce,
+          url: "../q/close_pronounce/" + pronounce + "/",
           success: function(text, status) {
             var optionList;
             optionList = _getOptionProcess(text, word);
@@ -663,17 +663,17 @@
 
       _Data.prototype.getMp3New = function(word, callback) {
         var url;
-        url = './music/' + encodeURIComponent(word) + '.wav';
+        url = '/game/music/' + word + '.wav';
         return $.ajax({
           type: 'get',
-          dataType: 'wav',
+          contentType: 'audio/wav',
           url: url,
           error: function(error) {
             return console.warn("getMp3New , ajax error", error);
           },
           success: function(data, status) {
             console.log("Data.getMp3New", "[" + word + "]", url, data);
-            if (data.responseText.length > 6) {
+            if (data.length > 6) {
               return callback(url);
             } else {
               return callback("");
