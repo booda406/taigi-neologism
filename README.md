@@ -1,5 +1,8 @@
 新臺語運動之遊戲分支
 
+##(安裝注意)
+* 請至 https://drive.google.com/file/d/0B3lz9sB2qPayZE9ITVgyTlZmZEE/view<br/> 下載music.zip並解壓縮至front-end/taigiGameFront/music/<br/>也就是說music資料夾裡面會有很多wav檔案
+
 ##資料處理 (using Python)
 
 * 讀取csv檔
