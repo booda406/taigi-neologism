@@ -568,11 +568,11 @@
 
       _getQuestionProcess = function(data) {
         var a, result, text;
-        //text = Lib.strip(data.responseText);
-        //if (text.length === 0) {
-        //  text = "風水:hong-suí";
-        //}
-        a = data.split(":");
+        text = Lib.strip(data.responseText);
+        if (text.length === 0) {
+          text = "風水:hong-suí";
+        }
+        a = text.split(":");
         return result = {
           question: a[0],
           qArr: a[0].split(""),
@@ -586,7 +586,7 @@
         return $.ajax({
           type: 'get',
           dataType: 'text',
-          url: './../q/get_question/',
+          url: '../q/get_question/',
           success: function(data, status) {
             if (typeof callback === 'function') {
               return callback(_getQuestionProcess(data));
@@ -620,11 +620,11 @@
         return $.ajax({
           type: 'get',
           dataType: 'text',
-          url: "./../q/close_pronounce/" + pronounce + '/',
+          url: "../q/close_pronounce/" + pronounce,
           success: function(data, status) {
             var optionList, text;
-            // text = Lib.strip(data.responseText);
-            optionList = _getOptionProcess(data, word);
+            text = Lib.strip(data.responseText);
+            optionList = _getOptionProcess(text, word);
             if (typeof callback === 'function') {
               return callback(optionList);
             }
@@ -668,18 +668,17 @@
 
       _Data.prototype.getMp3New = function(word, callback) {
         var url;
-        //url = 'music/' + encodeURIComponent(word) + '.wav';
-        url = './music/' + word + '.wav';
+        url = '/music/' + encodeURIComponent(word) + '.wav';
         return $.ajax({
           type: 'get',
-          contentType: 'audio/wav',
+          dataType: 'wav',
           url: url,
           error: function(error) {
             return console.warn("getMp3New , ajax error", error);
           },
           success: function(data, status) {
             console.log("Data.getMp3New", "[" + word + "]", url, data);
-            if (data.length > 6) {
+            if (data.responseText.length > 6) {
               return callback(url);
             } else {
               return callback("");
