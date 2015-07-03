@@ -567,12 +567,8 @@
       };
 
       _getQuestionProcess = function(data) {
-        var a, result, text;
-        text = Lib.strip(data.responseText);
-        if (text.length === 0) {
-          text = "風水:hong-suí";
-        }
-        a = text.split(":");
+        var a, result;
+        a = data.split(":");
         return result = {
           question: a[0],
           qArr: a[0].split(""),
@@ -621,9 +617,8 @@
           type: 'get',
           dataType: 'text',
           url: "../q/close_pronounce/" + pronounce,
-          success: function(data, status) {
-            var optionList, text;
-            text = Lib.strip(data.responseText);
+          success: function(text, status) {
+            var optionList;
             optionList = _getOptionProcess(text, word);
             if (typeof callback === 'function') {
               return callback(optionList);
