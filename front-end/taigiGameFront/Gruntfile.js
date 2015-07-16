@@ -9,6 +9,7 @@ module.exports = function(grunt) {
 					cssDir: 'css',
 					sassDir: 'sass',
 					imagesDir : 'img',
+          sourcemap : true , 
 					//outputStyle: 'compressed',
 					environment: 'development'
 				}
@@ -28,6 +29,11 @@ module.exports = function(grunt) {
     },
 		uglify:{
 			app :{
+        options: {
+          compress:{
+            drop_console: true 
+          }
+        },
 				files:{
 					'js/app.js':['js/app.js']
 				}

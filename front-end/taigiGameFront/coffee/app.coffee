@@ -398,9 +398,12 @@ $ ->
 
     _getQuestionProcess = (data)->
       # parse html to text
-      text = Lib.strip(data.responseText)
-      text = "風水:hong-suí" if text.length is 0
-      a = text.split(":")
+      text = data
+      if text.length is 0
+        console.warn ("getQuestion失敗 , 用[風水]代替")
+        text = "風水:hong-suí"
+
+      a  = text.split(":")
       # console.log a
       result =
         question : a[0]
@@ -422,8 +425,8 @@ $ ->
 
     _getOptionProcess = (data,ans)->
       if data.length is 0
-        data = "金,天,氣,不,錯,只,是,有,一,點,飄,雨"
-        console.warn('getOption no response')
+        data = "金,天,氣,不,錯,只,是,有,一,點,飄,雨,桌,子,很,高,時,物,很,好,吃,飲,料,喝"
+        console.warn('getOption失敗 , 用[金,天,氣,不,錯,只,是,有,一,點,飄,雨,桌,子,很,高,時,物,很,好,吃,飲,料,喝]代替')
       arr = data.split(',')
       while (i = arr.indexOf(ans)) isnt -1
         arr.splice(i, 1)
@@ -438,9 +441,10 @@ $ ->
       $.ajax
         type: 'get'
         dataType : 'text'
-        url: "../q/close_pronounce/#{pronounce}"
+        url: "../q/close_pronounce/#{pronounce}/"
         success:(data,status)->
-          text = Lib.strip(data.responseText)
+          # text = Lib.strip(data.responseText)
+          text = data
           optionList = _getOptionProcess(text,word)
           callback(optionList) if typeof(callback) is 'function'
         error : ()->
@@ -476,18 +480,18 @@ $ ->
           callback(url)
 
     getMp3New : (word , callback) ->
-      url = '/music/'+encodeURIComponent(word) + '.wav'
+      url = '/game/music/'+encodeURIComponent(word) + '.wav'
       $.ajax
         type: 'get'
-        dataType: 'wav'
+        contentType: 'audio/wav'
         url: url
         error: (error) ->
           console.warn "getMp3New , ajax error",error
         success: (data,status) ->
           # console.log("Data.getMp3New",status)
           # url = _getMp3Process(data)
-          console.log("Data.getMp3New", "[#{word}]" , url , data)
-          if data.responseText.length > 6
+          console.log("Data.getMp3New", "[#{word}]" , url , typeof(data))
+          if data.length > 6
             callback(url)
           else
             callback("")
